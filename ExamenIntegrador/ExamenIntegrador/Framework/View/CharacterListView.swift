@@ -18,9 +18,11 @@ struct CharacterListView: View {
         
         VStack {
             
+            // Titulo
             Text("Dragon Ball")
                 .font(.title)
             
+            // Lista
             List(viewModel.characters) { character in
                 HStack {
                     WebImage(url: URL(string: character.image))
@@ -31,6 +33,38 @@ struct CharacterListView: View {
                 }
             }.scrollContentBackground(.hidden)
                 .background(.white)
+            
+            // Paginacion
+            HStack {
+                Spacer()
+                
+                // Back
+                if true {
+                    Button {
+                        //
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                }
+                
+                Text("\(viewModel.page)")
+                    .foregroundColor(.gray)
+                
+                // Next
+                if true {
+                    Button {
+                        //
+                    } label: {
+                        Image(systemName: "chevron.forward")
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                }
+                
+                Spacer()
+            }
             
             
         }.onAppear {

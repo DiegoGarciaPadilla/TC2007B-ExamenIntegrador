@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CharacterRequirementProtocol {
-    func getCharacters() async throws -> [Character]
+    func getCharacters() async throws -> CharacterResponse
 }
 
 class CharacterRequirement: CharacterRequirementProtocol {
@@ -24,8 +24,8 @@ class CharacterRequirement: CharacterRequirementProtocol {
     }
     
     // Obtener personajes
-    func getCharacters() async throws -> [Character] {
-        return try await repository.getCharacters().items
+    func getCharacters() async throws -> CharacterResponse {
+        return try await repository.getCharacters()
     }
     
 }

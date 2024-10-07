@@ -19,13 +19,15 @@ class CharacterListViewModel: ObservableObject {
     
     // Variables
     @Published var characters: [Character] = []
+    @Published var page: Int = 1
     
     // Obtener personajes
     func getCharacters() async {
         
         do {
             let response = try await characterRequirement.getCharacters()
-            characters = response
+            characters = response.items
+            page = response.meta.currentPage
         } catch {
             print("Error al obtener personajes: \(error)")
         }

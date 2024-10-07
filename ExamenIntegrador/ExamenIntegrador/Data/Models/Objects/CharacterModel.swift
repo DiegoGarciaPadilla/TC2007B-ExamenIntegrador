@@ -10,6 +10,7 @@ import Foundation
 struct CharacterResponse: Codable {
     var items: [Character]
     var meta: CharacterMeta
+    var links: CharacterLinks
     
 }
 
@@ -32,4 +33,11 @@ struct CharacterMeta: Codable {
     var itemsPerPage: Int
     var totalPages: Int
     var currentPage: Int
+}
+
+struct CharacterLinks: Codable {
+    var first: String
+    var previous: String
+    var next: String
+    var last: String
 }
