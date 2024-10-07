@@ -39,28 +39,40 @@ struct CharacterListView: View {
                 Spacer()
                 
                 // Back
-                if true {
+                if viewModel.linkToPreviousPage != "" {
                     Button {
-                        //
+                        Task {
+                            await viewModel.previousPage()
+                        }
                     } label: {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.gray)
                             .padding()
                     }
+                } else {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color(.lightGray))
+                        .padding()
                 }
                 
                 Text("\(viewModel.page)")
                     .foregroundColor(.gray)
                 
                 // Next
-                if true {
+                if viewModel.linkToNextPage != "" {
                     Button {
-                        //
+                        Task {
+                            await viewModel.nextPage()
+                        }
                     } label: {
                         Image(systemName: "chevron.forward")
                             .foregroundColor(.gray)
                             .padding()
                     }
+                } else {
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(Color(.lightGray))
+                        .padding()
                 }
                 
                 Spacer()

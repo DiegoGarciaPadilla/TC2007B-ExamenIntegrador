@@ -9,6 +9,7 @@ import Foundation
 
 protocol CharacterRequirementProtocol {
     func getCharacters() async throws -> CharacterResponse
+    func getCharactersFromURL(url: URL) async throws -> CharacterResponse
 }
 
 class CharacterRequirement: CharacterRequirementProtocol {
@@ -26,6 +27,12 @@ class CharacterRequirement: CharacterRequirementProtocol {
     // Obtener personajes
     func getCharacters() async throws -> CharacterResponse {
         return try await repository.getCharacters()
+    }
+    
+    // Obtener personajes dado un URL del modelo
+    func getCharactersFromURL(url: URL) async throws -> CharacterResponse {
+        let response = try await repository.getCharactersFromURL(url: url)
+        return response
     }
     
 }

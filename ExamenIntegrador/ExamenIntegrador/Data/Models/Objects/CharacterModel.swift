@@ -36,8 +36,8 @@ struct CharacterMeta: Codable {
 }
 
 struct CharacterLinks: Codable {
-    var first: String
-    var previous: String
-    var next: String
-    var last: String
+    var first: String?
+    var previous: String?
+    var next: String?
+    var last: String?
 }

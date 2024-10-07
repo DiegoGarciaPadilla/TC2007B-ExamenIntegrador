@@ -26,4 +26,10 @@ class DragonBallRepository {
         return response
     }
     
+    // Obtener personajes dado un URL del modelo
+    func getCharactersFromURL(url: URL) async throws -> CharacterResponse {
+        let response = try await apiService.getCharacters(url: url)
+        return response
+    }
+    
 }
