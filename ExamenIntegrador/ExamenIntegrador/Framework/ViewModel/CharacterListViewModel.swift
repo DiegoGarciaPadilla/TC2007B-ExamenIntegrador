@@ -73,7 +73,7 @@ class CharacterListViewModel: ObservableObject {
     func previousPage() async {
         
         // Comprobar si existe una siguiente página
-        if linkToNextPage == "" {
+        if linkToPreviousPage == "" {
             return
         }
         
