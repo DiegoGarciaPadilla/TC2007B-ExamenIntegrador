@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B795F6D2CB43BBA0078050C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7B795F6C2CB43BBA0078050C /* Alamofire */; };
 		7B795F702CB43BD00078050C /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 7B795F6F2CB43BD00078050C /* FlowStacks */; };
+		7B885ED42CB43DA600AF3E1D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7B885ED32CB43DA600AF3E1D /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B885ED42CB43DA600AF3E1D /* SDWebImageSwiftUI in Frameworks */,
 				7B795F6D2CB43BBA0078050C /* Alamofire in Frameworks */,
 				7B795F702CB43BD00078050C /* FlowStacks in Frameworks */,
 			);
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				7B795F6C2CB43BBA0078050C /* Alamofire */,
 				7B795F6F2CB43BD00078050C /* FlowStacks */,
+				7B885ED32CB43DA600AF3E1D /* SDWebImageSwiftUI */,
 			);
 			productName = ExamenIntegrador;
 			productReference = 7B4D434E2CB42E7C008B07D3 /* ExamenIntegrador.app */;
@@ -207,6 +210,7 @@
 			packageReferences = (
 				7B795F6B2CB43BBA0078050C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7B795F6E2CB43BC40078050C /* XCRemoteSwiftPackageReference "FlowStacks" */,
+				7B885ED22CB43DA600AF3E1D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7B4D434F2CB42E7C008B07D3 /* Products */;
@@ -589,6 +593,14 @@
 				minimumVersion = 0.8.2;
 			};
 		};
+		7B885ED22CB43DA600AF3E1D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -601,6 +613,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B795F6E2CB43BC40078050C /* XCRemoteSwiftPackageReference "FlowStacks" */;
 			productName = FlowStacks;
+		};
+		7B885ED32CB43DA600AF3E1D /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B885ED22CB43DA600AF3E1D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

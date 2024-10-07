@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CharacterListView: View {
     
@@ -14,15 +15,29 @@ struct CharacterListView: View {
     
     var body: some View {
         
+        
         VStack {
+            
+            Text("Dragon Ball")
+                .font(.title)
+            
             List(viewModel.characters) { character in
-                Text(character.name)
-            }
+                HStack {
+                    WebImage(url: URL(string: character.image))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                    Text(character.name)
+                }
+            }.scrollContentBackground(.hidden)
+                .background(.white)
+            
+            
         }.onAppear {
             Task {
                 await viewModel.getCharacters()
             }
-        }
+        }.padding()
     }
 }
 
