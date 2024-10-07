@@ -32,4 +32,11 @@ class DragonBallRepository {
         return response
     }
     
+    // Filtrar personajes
+    func getFilteredCharacters(filter: String) async throws -> [Character] {
+        let url = URL(string: "\(API.baseURL)\(API.Routes.characters)")!
+        let response = try await apiService.getFilteredCharacters(url: url, filter: filter)
+        return response
+    }
+    
 }

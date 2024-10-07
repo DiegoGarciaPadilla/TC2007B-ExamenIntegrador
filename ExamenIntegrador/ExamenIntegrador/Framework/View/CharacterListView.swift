@@ -22,6 +22,28 @@ struct CharacterListView: View {
             Text("Dragon Ball")
                 .font(.title)
             
+            // Search bar
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                TextField("Buscar", text: $viewModel.searchText)
+                    .padding(.vertical, 8)
+                    .onChange(of: viewModel.searchText) {
+                        Task {
+                            if viewModel.searchText != "" {
+                                await viewModel.searchCharacters(query: viewModel.searchText)
+                                viewModel.isSearching = true
+                            } else {
+                                viewModel.isSearching = false
+                            }
+                        }
+                    }
+            }
+            .padding(.horizontal)
+            Divider()
+                .background(Color.gray)
+                .padding(.horizontal)
+
             // Lista
             List(viewModel.characters) { character in
                 HStack {
@@ -34,48 +56,50 @@ struct CharacterListView: View {
             }.scrollContentBackground(.hidden)
                 .background(.white)
             
-            // Paginacion
-            HStack {
-                Spacer()
-                
-                // Back
-                if viewModel.linkToPreviousPage != "" {
-                    Button {
-                        Task {
-                            await viewModel.previousPage()
+            // Paginacion (solo si no está filtrando)
+            if viewModel.isSearching == false {
+                HStack {
+                    Spacer()
+                    
+                    // Back
+                    if viewModel.linkToPreviousPage != "" {
+                        Button {
+                            Task {
+                                await viewModel.previousPage()
+                            }
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.gray)
+                                .padding()
                         }
-                    } label: {
+                    } else {
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color(.lightGray))
                             .padding()
                     }
-                } else {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(Color(.lightGray))
-                        .padding()
-                }
-                
-                Text("\(viewModel.page)")
-                    .foregroundColor(.gray)
-                
-                // Next
-                if viewModel.linkToNextPage != "" {
-                    Button {
-                        Task {
-                            await viewModel.nextPage()
+                    
+                    Text("\(viewModel.page)")
+                        .foregroundColor(.gray)
+                    
+                    // Next
+                    if viewModel.linkToNextPage != "" {
+                        Button {
+                            Task {
+                                await viewModel.nextPage()
+                            }
+                        } label: {
+                            Image(systemName: "chevron.forward")
+                                .foregroundColor(.gray)
+                                .padding()
                         }
-                    } label: {
+                    } else {
                         Image(systemName: "chevron.forward")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color(.lightGray))
                             .padding()
                     }
-                } else {
-                    Image(systemName: "chevron.forward")
-                        .foregroundColor(Color(.lightGray))
-                        .padding()
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
             
             

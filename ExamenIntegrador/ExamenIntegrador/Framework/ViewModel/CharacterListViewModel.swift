@@ -22,6 +22,8 @@ class CharacterListViewModel: ObservableObject {
     @Published var page: Int = 1
     @Published var linkToNextPage: String = ""
     @Published var linkToPreviousPage: String = ""
+    @Published var searchText: String = ""
+    @Published var isSearching: Bool = false
     
     // Obtener personajes
     @MainActor
@@ -88,6 +90,22 @@ class CharacterListViewModel: ObservableObject {
             print("Error al obtener personajes: \(error)")
         }
         
+    }
+    
+    @MainActor
+    func searchCharacters(query: String) async {
+        do {
+            // Obtener respuesta
+            let response = try await characterRequirement.getFiltredCharacters(filter: query)
+            
+            // Obtener datos de la respuesta
+            characters = response
+            page = 1
+            linkToNextPage = ""
+            linkToPreviousPage = ""
+        } catch {
+            print("Error al obtener personajes: \(error)")
+        }
     }
 
 }
