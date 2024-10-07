@@ -34,6 +34,7 @@ struct CharacterListView: View {
                                 await viewModel.searchCharacters(query: viewModel.searchText)
                                 viewModel.isSearching = true
                             } else {
+                                await viewModel.getCharacters() 
                                 viewModel.isSearching = false
                             }
                         }
